@@ -1,0 +1,21 @@
+[Unit]
+Description=Blog Image Generator Web App
+Documentation=https://github.com/your-repo/blog-image-generator
+After=network.target
+
+[Service]
+Type=simple
+User=$USER
+WorkingDirectory=/home/h1o2s6/Projects/blog-image-generator
+Environment=NODE_ENV=production
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=PEXELS_API_KEY=CpzqLrpxFh5i5EkZAT1NWKRZtcGzgIJZyFtANxQVD9lYeT75tXZBpEwO
+ExecStart=/usr/bin/node web-server.js
+Restart=on-failure
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=blog-image-generator
+
+[Install]
+WantedBy=multi-user.target
