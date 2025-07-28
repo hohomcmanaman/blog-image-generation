@@ -1,0 +1,26 @@
+# Firebase App Hosting Configuration
+runConfig:
+  runtime: nodejs18
+  env:
+    - variable: NODE_ENV
+      value: production
+    - variable: PORT
+      value: "8080"
+    - variable: HOST
+      value: "0.0.0.0"
+  
+  # Environment variables (secrets will be managed in Firebase Console)
+  secretEnv:
+    - variable: PEXELS_API_KEY
+      secret: pexels-api-key
+
+# Build configuration
+buildConfig:
+  runtime: nodejs18
+  commands:
+    - npm ci --only=production
+    - npm run build-for-firebase
+
+# Health check configuration
+healthCheck:
+  path: "/health"
